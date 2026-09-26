@@ -1,11 +1,12 @@
 import request from 'supertest';
 import { expect } from 'chai';
-import mongoose from 'mongoose';
-import app from '../src/app.js';
+import app from '../../src/app.js';
 
-describe('POST /api/auth/login', () => {
+describe('Auth', function () {
+  this.timeout(10000);
+
   after(async () => {
-    // Mantém a conexão do Mongo ativa para os demais testes da suíte.
+    // Mantém a conexão ativa para a execução composta da suíte.
   });
 
   it('deve retornar 200 e um token quando o admin informar e-mail e senha corretos', async () => {

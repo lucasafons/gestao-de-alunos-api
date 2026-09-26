@@ -1,4 +1,4 @@
-name: Testes de API
+name: CI
 
 on:
   push:
@@ -21,20 +21,23 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
+    env:
+      NODE_ENV: test
+      MONGODB_URI: mongodb://127.0.0.1:27017/gestao-de-alunos
+      JWT_SECRET: segredo-dev-gestao-de-alunos
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Configurar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
           cache: npm
 
       - name: Instalar dependências
         run: npm ci
 
-      - name: Executar testes
+      - name: Rodar testes
         run: npm test
-        env:
-          MONGODB_URI: mongodb://127.0.0.1:27017/gestao-de-alunos-test

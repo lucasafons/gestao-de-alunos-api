@@ -1,0 +1,34 @@
+{
+  "adminLogin": {
+    "email": "admin@escola.com",
+    "senha": "admin123"
+  },
+  "studentCreate": {
+    "nome": "João da Silva",
+    "email": "joao.silva@example.com",
+    "matricula": "2025001",
+    "senha": "123456"
+  },
+  "studentWork": {
+    "disciplinaId": "disciplina-programacao-web",
+    "titulo": "Entrega de trabalho: landing page",
+    "descricao": "Entregar a landing page proposta no curso."
+  },
+  "loginScenarios": [
+    {
+      "credentials": { "email": "admin@escola.com", "senha": "admin123" },
+      "expectedStatus": 200,
+      "expectedToken": true
+    },
+    {
+      "credentials": { "email": "admin@escola.com", "senha": "senha-errada" },
+      "expectedStatus": 401,
+      "expectedToken": false
+    },
+    {
+      "credentials": { "email": "ana.souza@example.com", "senha": "123456" },
+      "expectedStatus": 200,
+      "expectedToken": true
+    }
+  ]
+}
